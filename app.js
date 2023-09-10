@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors');
 const app = express()
-
+const path = require('path');
 
 const mongoose = require('mongoose');
 const clientRoutes = require('./router/client');
@@ -14,6 +14,13 @@ mongoose.connect('mongodb+srv://Angel:Le24jan2022.@universal.btl7smq.mongodb.net
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+// Définir le dossier public où se trouve votre fichier index.html
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Gérer les requêtes à la racine en renvoyant le fichier index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.use(cors());
 
