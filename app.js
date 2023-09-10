@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/client', clientRoutes);
+app.use('/', clientRoutes);
 
 module.exports = app;
   

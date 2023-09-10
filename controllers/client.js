@@ -20,5 +20,18 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.getup = async (req, res) => {
+
+  try {
+    const oldClient = await Client.find({});
+
+    
+    res.status(200).json({
+      data : oldClient,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
