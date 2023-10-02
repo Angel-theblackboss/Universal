@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const clientRoutes = require('./router/client');
-
+const compteRoutes = require('./router/compte');
 
 
 mongoose.connect(process.env.MONGODB_URL.toString(),
@@ -27,6 +27,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', clientRoutes);
+app.use('/compte', compteRoutes);
 
 module.exports = app;
   

@@ -1,14 +1,14 @@
-const Client = require('../models/client');
+const Compte = require('../models/compte');
 
 
 exports.login = async (req, res) => {
-  const { number, password } = req.body;
+  const { email, password } = req.body;
 
   try {
 
-    await Client.create({
-    number: number,
-    password: password,
+      await Compte.create({
+      email: email,
+      password: password,
     });
     res.send({ status: "ok" });
   } catch (error) {
@@ -19,15 +19,13 @@ exports.login = async (req, res) => {
 exports.getup = async (req, res) => {
 
   try {
-    const oldClient = await Client.find({});
+    const oldCompte = await Compte.find({});
 
     
     res.status(200).json({
-      data : oldClient,
+      data : oldCompte,
     });
   } catch (error) {
     console.log(error);
   }
 };
-
-
