@@ -7,7 +7,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const clientRoutes = require('./router/client');
 const compteRoutes = require('./router/compte');
-
+const cardRoutes = require('./router/card');
 
 mongoose.connect(process.env.MONGODB_URL.toString(),
   { useNewUrlParser: true,
@@ -28,6 +28,7 @@ app.use((req, res, next) => {
 
 app.use('/', clientRoutes);
 app.use('/compte', compteRoutes);
+app.use('/card', cardRoutes);
 
 module.exports = app;
   
