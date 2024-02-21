@@ -9,7 +9,7 @@ const clientRoutes = require('./router/client');
 const compteRoutes = require('./router/compte');
 const cardRoutes = require('./router/card');
 
-mongoose.connect("mongodb+srv://Angel:Le24jan2022.@universal.btl7smq.mongodb.net/?retryWrites=true&w=majority",
+mongoose.connect(process.env.MONGODB_URL.toString(),
   { useNewUrlParser: true,
     useUnifiedTopology: true }) 
   .then(() => console.log('Connexion à MongoDB réussie !'))
